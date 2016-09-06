@@ -79,11 +79,14 @@ namespace TextSwitcher
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f060000
-			public const int Button = 2131099648;
-			
 			// aapt resource value: 0x7f060001
-			public const int Switcher = 2131099649;
+			public const int Button = 2131099649;
+			
+			// aapt resource value: 0x7f060000
+			public const int Intro = 2131099648;
+			
+			// aapt resource value: 0x7f060002
+			public const int Switcher = 2131099650;
 			
 			static Id()
 			{

@@ -13,7 +13,7 @@ namespace TextSwitcher
     {
         public virtual string TAG
         {
-            get { return "SampleActivityBase"; }
+            get { return "MainActivity"; }
         }
 
         private Android.Widget.TextSwitcher _switcher;
