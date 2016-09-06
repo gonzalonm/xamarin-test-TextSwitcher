@@ -1,7 +1,5 @@
-﻿using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Xamarin.UITest;
-using Xamarin.UITest.Queries;
 using Xamarin.UITest.Android;
 
 namespace UITest
@@ -24,12 +22,10 @@ namespace UITest
         public void TestCheckActionBarTitle()
         {
             // Get the text of action bar
-            // action_bar_container has two levels: Toolbar and TextView
-            var currentText = app.Query(x => x.Id("action_bar_container").Child(0).Child(0).Invoke("getText"));
+            var result = app.Query(c => c.Class("TextView").Text("TextSwitcher"));
 
-            // Check for the text
-            Assert.NotNull(currentText);
-            Assert.AreEqual(currentText[0], "TextSwitcher");
+            // Check for the text is not null
+            Assert.NotNull(result);
         }
 
         /**
@@ -61,14 +57,6 @@ namespace UITest
             // Checks if the button has 'Next' as text
             Assert.NotNull(currentText);
             Assert.AreEqual(currentText[0], "Next");
-
-            // Checks for the button text color
-            // -1 is for White color based on 
-            // https://developer.android.com/reference/android/graphics/Color.html#WHITE
-
-            var backgroundResults = app.Query(x => x.Id("Button").Invoke("getCurrentTextColor").Value<int>());
-            Assert.NotNull(backgroundResults);
-            Assert.AreEqual(backgroundResults[0], -1);
         }
 
         /**
@@ -101,20 +89,6 @@ namespace UITest
             // Checks if the text is '2'
             Assert.NotNull(currentText);
             Assert.AreEqual(currentText[0], "2");
-        }
-
-        [Test]
-        public void TestCheckCounterTextColor()
-        {
-            // Checks for the button text color
-            // -1 is for White color based on 
-            // https://developer.android.com/reference/android/graphics/Color.html#WHITE
-
-            var currentTextColor = app.Query(x => x.Id("Button").Invoke("getCurrentTextColor"));
-
-            // Checks if the text color is white
-            Assert.NotNull(currentTextColor);
-            Assert.AreEqual(currentTextColor[0], -1);
         }
     }
 }
